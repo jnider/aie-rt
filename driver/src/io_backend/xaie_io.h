@@ -190,7 +190,7 @@ typedef struct XAie_ShimDmaBdArgs {
 } XAie_ShimDmaBdArgs;
 
 /************************** Function Prototypes  *****************************/
-AieRC XAie_IOInit(XAie_DevInst *DevInst);
+AieRC XAie_IOInit(XAie_DevInst *DevInst, XAie_BackendType backend);
 const XAie_Backend* _XAie_GetBackendPtr(XAie_BackendType Backend);
 
 /*****************************************************************************/

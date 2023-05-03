@@ -117,10 +117,17 @@ static const XAie_Backend *IOBackend[XAIE_IO_BACKEND_MAX] =
 * @note		Internal Only.
 *
 ******************************************************************************/
-AieRC XAie_IOInit(XAie_DevInst *DevInst)
+AieRC XAie_IOInit(XAie_DevInst *DevInst, XAie_BackendType backend)
 {
 	AieRC RC;
-	const XAie_Backend *Backend = IOBackend[XAIE_DEFAULT_BACKEND];
+	const XAie_Backend *Backend;
+
+	if (backend >= XAIE_IO_BACKEND_MAX) {
+		XAIE_DBG("Invalid backend %d; using default\n", backend);
+		backend = XAIE_DEFAULT_BACKEND;
+	}
+
+	Backend = IOBackend[backend];
 
 	RC = Backend->Ops.Init(DevInst);
 	if(RC != XAIE_OK) {

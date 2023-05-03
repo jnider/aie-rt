@@ -181,6 +181,7 @@ typedef struct {
 	u8 AieTileRowStart;
 	u8 AieTileNumRows;
 	XAie_PartitionProp PartProp;
+	XAie_BackendType Backend;
 } XAie_Config;
 
 /*
